@@ -1,0 +1,2 @@
+run-rs:
+	cargo run

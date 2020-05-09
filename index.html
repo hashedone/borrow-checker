@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/github-gist.css">
+
+    <style>
+        body {
+            background-image: url('logo.png');
+            background-size: 5%;
+            background-repeat: no-repeat;
+            background-position: 95% 5%;
+        }
+
+        img {
+            border: 0
+        }
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>Borrow checker bez tajemnic</h2>
+            </section>
+            <section>
+                <img src="avatar.png"
+                    style="border: 0; box-shadow: none; width: 200px; height: 200px; float: left"></img>
+                <h2>Bartłomiej Kuras</h2>
+
+                <ul>
+                    <li> Ponad 6 lat pracy jako programista C++</li>
+                    <li> Entuzjasta Rusta od ~2016 roku</li>
+                    <li> Współorganizator Rust Wrocław Meetup</li>
+                    <li> 9 miesięcy jako programista Rust w Anixe</li>
+                    <li> Od stycznia programista Rust w Luxofcie</li>
+                </ul>
+            </section>
+            <section data-markdown="slides.md" data-separator="^----" data-separator-vertical="^---"
+                data-separator-notes="^Note:" data-charset="utf-8">
+            </section>
+
+        </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            hash: true,
+            dependencies: [
+                {src: 'plugin/markdown/marked.js'},
+                {src: 'plugin/markdown/markdown.js'},
+                {src: 'plugin/highlight/highlight.js'},
+                {src: 'plugin/notes/notes.js', async: true}
+            ]
+        });
+    </script>
+</body>
+
+</html>
