@@ -63,7 +63,7 @@ https://www.youtube.com/watch?v=o01QmYVluSw
 
 # WTF?
 
---
+---
 
 ## Darmowe abstrakcje
 
