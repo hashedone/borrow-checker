@@ -1,3 +1,9 @@
+## Slajdy i przykłady
+
+https://github.com/hashedone/borrow-checker
+
+----
+
 ## Pamięć
 
 ### C++
@@ -18,7 +24,7 @@
 
 * Niższa wydajność (teoretycznie)
 * Wycieki pamięci właściwie nie istnieją
-* Użycie zwolnione pamięci - niemożliwe
+* Użycie zwolnionej pamięci - niemożliwe
 * Dereferencja nieprawidłowego wskaźnika?
   * `NullPointerException`...?
 * Wyścigi danych możliwe do uniknięcia
@@ -57,11 +63,11 @@ https://www.youtube.com/watch?v=o01QmYVluSw
 
 # WTF?
 
-----
+--
 
 ## Darmowe abstrakcje
 
-### C++ - Move Semantics
+### C++ Move Semantics
 
 ```cpp
 // semantical_move/main.cpp
@@ -254,7 +260,7 @@ error[E0502]: cannot borrow `number` as mutable because it
 ## Zasady pożyczania
 
 * Jednocześnie można pożyczyć obiekt współdzielnie (shared borrow) wielokrotnie LUB
-* Pożyczyć go raz mutowalnie (mutable borro)
+* Pożyczyć go raz mutowalnie (mutable borrow)
 
 ### Nigdy jednoczesnie
 
@@ -263,7 +269,7 @@ error[E0502]: cannot borrow `number` as mutable because it
 ## Zasady pożyczania
 
 * Nie może jednocześnie istnieć pożyczka współdzielona i mutowalna
-* Nie mogą istnieś jednocześnie dwie pożyczki mutowlane
+* Nie mogą istnieć jednocześnie dwie pożyczki mutowalane
 
 ---
 
@@ -589,14 +595,14 @@ fn printer<'a>(
 
 ```rust
 fn printer<'a>(data: &'a [i32]) -> impl Fn() -> () + 'a {
-    // fn iter<'a>(&'a self) -> impl Iterator + 'a
+    // fn iter<'a>(&'a self) ->
+    //   impl Iterator<Item = &'a i32> + 'a
     let iter = data.iter();
     move || {
         // `Clone::clone` zwraca taki sam typ - a więc
         // `impl Iterator<Item = &'a i32> + 'a`
         //
         // Typ `item` wynika z `Iterator::next`:
-        // fn next(&mut self) -> Self::Item;
         // fn next(&mut self) -> &'a i32;
         for item in iter.clone() {
             println!("Item: {}", item);
@@ -861,19 +867,17 @@ Rust _NIE_ chroni przed wyciekami pamięci bardziej, niż wzorzec RAII.
 ## Cykl referencji
 
 ```rust
-// leal/main.rs
+// leak/main.rs
 fn main() {
     let a = Rc::new(A {
         data: 42,
         ptr: RefCell::new(None)
     });
-
     // `b::data` points to `a`
     let b = Rc::new(B {
         data: 1024,
         ptr: a.clone()
     });
-
     // `a::data` points to `b`
     a.ptr.replace(Some(b.clone()));
 }
@@ -1140,3 +1144,7 @@ impl<'a> Slicer<'a> for &'a [i32] {
 * www.rust-wroclaw.pl
 * [fb/rustwroclaw](http://facebook.com/rustwroclaw)
 * [yt/channel/UC9X86dyEwpbCnpC18qjt33Q](http://youtube.com/channel/UC9X86dyEwpbCnpC18qjt33Q)
+
+---
+
+# Dziękuję
